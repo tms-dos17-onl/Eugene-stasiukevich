@@ -36,7 +36,9 @@
    CentOS,Ubuntu
    ![VirtualBox_Centos7_memory](https://github.com/Infectdream/DOS17-Smile/assets/100120414/f9370962-428a-49e0-920d-8dd11b511797)
    ![VirtualBox_Centos7_memory 1](https://github.com/Infectdream/DOS17-Smile/assets/100120414/d694d229-2bd1-40a5-85cb-1ca6b74344f6)
-9. 
+9. Вывести список файловых систем, которые поддерживаются ядром
+    ![VirtualBox_Centos7_filesystems](https://github.com/Infectdream/DOS17-Smile/assets/100120414/b2171323-a1ea-44d5-b3d5-ab68f145fb1a)
+
 
 
 
