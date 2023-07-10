@@ -475,4 +475,18 @@ passwd: данные аутентификации успешно обновле�
 [root@localhost ~]# su user_with_group
 bash-4.4$ systemctl restart chronyd
 6.
-  
+  %util считается как процентное отношение к Ticks, deltams. 
+busy = 100.0 * blkio.ticks / deltams; /* percentage! */
+if (busy > 100.0) busy = 100.0;
+DeltaMS представляет собой сумму нагрузки на систему за период времени (время пользователя + системное время + время простоя + iowait)/ncpu.
+
+double deltams = 1000.0 *
+        ((new_cpu.user + new_cpu.system +
+          new_cpu.idle + new_cpu.iowait) -
+         (old_cpu.user + old_cpu.system +
+          old_cpu.idle + old_cpu.iowait)) / ncpu / HZ;
+Тики - это Time of requests in queueза период
+
+blkio.ticks = new_blkio[p].ticks
+                - old_blkio[p].ticks;
+   
