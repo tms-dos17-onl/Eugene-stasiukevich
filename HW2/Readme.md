@@ -1,6 +1,6 @@
 HW 2
 1. Смонтировать /home на отдельный раздел
-  [root@localhost ~]# lsblk
+[root@localhost ~]# lsblk
 NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
 sda           8:0    0 41,5G  0 disk 
 ├─sda1        8:1    0    1G  0 part /boot
@@ -97,16 +97,13 @@ bash: etc/fstab: No such file or directory
 bash: /etc/fstab: Permission denied
 [root@localhost ~]# cat /etc/fstab
 
-#
 # /etc/fstab
 # Created by anaconda on Sun May 28 16:27:56 2023
-#
 # Accessible filesystems, by reference, are maintained under '/dev/disk/'.
 # See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info.
-#
 # After editing this file, run 'systemctl daemon-reload' to update systemd
 # units generated from this file.
-#
+
 /dev/mapper/cs-root     /                       xfs     defaults        0 0
 UUID=2ef8d6ad-143a-4fe7-8485-9e6c0eb29c89 /boot                   xfs     defaults        0 0
 /dev/mapper/cs-swap     none                    swap    defaults        0 0
@@ -136,16 +133,10 @@ bash: /test_disk: Is a directory
 [root@localhost ~]# du -sh
 19M	.
 [root@localhost ~]# sudo cp -a /home/* /test_disk
+
+
 2. Создать нового пользователя user_with_group с home-директорией /var/home/user
-  l[root@localhost ~]# lsblk
-NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
-sda           8:0    0 41,5G  0 disk 
-├─sda1        8:1    0    1G  0 part /boot
-└─sda2        8:2    0 40,5G  0 part 
-  ├─cs-root 253:0    0 36,5G  0 lvm  /
-  └─cs-swap 253:1    0    4G  0 lvm  [SWAP]
-sdb           8:16   0 41,5G  0 disk /test_disk
-sr0          11:0    1   61M  0 rom  /run/media/root/VBox_GAs_6.1.44
+
 [root@localhost ~]# adduser user_with_group
 [root@localhost ~]# cat /etc/passwd
 root:x:0:0:root:/root:/bin/bash
@@ -296,7 +287,12 @@ mkdir: создан каталог 'iser_with_group'
 mkdir: создан каталог 'user_with_group'
 [root@localhost home]# ls -l /var/home/user_with_group
 итого 0
+
+
+
 3. Создать новую группу пользователей priv_group, перенести в нее пользователя user_with_group
+ 
+  
   [root@localhost ~]# groupadd priv_group
 [root@localhost ~]# cat /etc/group
 root:x:0:
@@ -391,6 +387,7 @@ priv_group:x:1003:
 [root@localhost ~]# usermod -g priv_group user_with_group
 [root@localhost ~]# groups user_with_group
 user_with_group : priv_group
+
 4. Cоздать директорию и выдать права на нее только группе это пользователя
   [root@localhost ~]# cd /test_disk
 [root@localhost test_disk]# mkdir -v policy_folder
@@ -409,6 +406,8 @@ drwx------. 16 Estetiques     Estetiques            4096 июл  9 16:16 Estetiq
 drwx------.  2 root           root                 16384 июл 10 19:10 lost+found
 drwx------. 15 new_admin_user new_admin_user        4096 июл  9 16:18 new_admin_user
 drwxr-xr-x.  2 root           priv_group            4096 июл 10 20:38 policy_folder
+
+
 5. Установить ntpd(chrony), разрешить пользователю user_with_group выполнять команду 
   [root@localhost ~]# yum install chrony
 Последняя проверка окончания срока действия метаданных: 1:31:14 назад, Пн 10 июл 2023 19:20:16.
@@ -420,39 +419,28 @@ drwxr-xr-x.  2 root           priv_group            4096 июл 10 20:38 policy_
 # Use public servers from the pool.ntp.org project.
 # Please consider joining the pool (http://www.pool.ntp.org/join.html).
 pool 2.centos.pool.ntp.org iburst
-
 # Record the rate at which the system clock gains/losses time.
 driftfile /var/lib/chrony/drift
-
 # Allow the system clock to be stepped in the first three updates
 # if its offset is larger than 1 second.
 makestep 1.0 3
-
 # Enable kernel synchronization of the real-time clock (RTC).
 rtcsync
-
 # Enable hardware timestamping on all interfaces that support it.
 #hwtimestamp *
-
 # Increase the minimum number of selectable sources required to adjust
 # the system clock.
 #minsources 2
-
 # Allow NTP client access from local network.
 #allow 192.168.0.0/16
-
 # Serve time even if not synchronized to a time source.
 #local stratum 10
-
 # Specify file containing keys for NTP authentication.
 keyfile /etc/chrony.keys
-
 # Get TAI-UTC offset and leap seconds from the system tz database.
 leapsectz right/UTC
-
 # Specify directory for log files.
 logdir /var/log/chrony
-
 # Select which information is logged.
 #log measurements statistics tracking
 [root@localhost ~]# sudo visudo
@@ -474,8 +462,11 @@ exit
 passwd: данные аутентификации успешно обновлены.
 [root@localhost ~]# su user_with_group
 bash-4.4$ systemctl restart chronyd
+
+
 6. Вывод команды iostat -x в последней колонке показывает загрузку дисков в процентах. Откуда утилита это понимает?
  Достаточно ли вывода команды iostat -x для того, чтобы оценить реальную нагрузку на диски,  или нужны дополнительные условия или ключи?
+
   %util считается как процентное отношение к Ticks, deltams. 
 busy = 100.0 * blkio.ticks / deltams; /* percentage! */
 if (busy > 100.0) busy = 100.0;
