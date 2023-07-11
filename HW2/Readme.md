@@ -1,5 +1,5 @@
 HW 2
-1. 
+1. Смонтировать /home на отдельный раздел
   [root@localhost ~]# lsblk
 NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
 sda           8:0    0 41,5G  0 disk 
@@ -136,7 +136,7 @@ bash: /test_disk: Is a directory
 [root@localhost ~]# du -sh
 19M	.
 [root@localhost ~]# sudo cp -a /home/* /test_disk
-2.
+2. Создать нового пользователя user_with_group с home-директорией /var/home/user
   l[root@localhost ~]# lsblk
 NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
 sda           8:0    0 41,5G  0 disk 
@@ -296,7 +296,7 @@ mkdir: создан каталог 'iser_with_group'
 mkdir: создан каталог 'user_with_group'
 [root@localhost home]# ls -l /var/home/user_with_group
 итого 0
-3. 
+3. Создать новую группу пользователей priv_group, перенести в нее пользователя user_with_group
   [root@localhost ~]# groupadd priv_group
 [root@localhost ~]# cat /etc/group
 root:x:0:
@@ -391,7 +391,7 @@ priv_group:x:1003:
 [root@localhost ~]# usermod -g priv_group user_with_group
 [root@localhost ~]# groups user_with_group
 user_with_group : priv_group
-4.
+4. Cоздать директорию и выдать права на нее только группе это пользователя
   [root@localhost ~]# cd /test_disk
 [root@localhost test_disk]# mkdir -v policy_folder
 mkdir: создан каталог 'policy_folder'
@@ -409,7 +409,7 @@ drwx------. 16 Estetiques     Estetiques            4096 июл  9 16:16 Estetiq
 drwx------.  2 root           root                 16384 июл 10 19:10 lost+found
 drwx------. 15 new_admin_user new_admin_user        4096 июл  9 16:18 new_admin_user
 drwxr-xr-x.  2 root           priv_group            4096 июл 10 20:38 policy_folder
-5.
+5. Установить ntpd(chrony), разрешить пользователю user_with_group выполнять команду 
   [root@localhost ~]# yum install chrony
 Последняя проверка окончания срока действия метаданных: 1:31:14 назад, Пн 10 июл 2023 19:20:16.
 Пакет chrony-4.2-1.el8.x86_64 уже установлен.
@@ -474,7 +474,8 @@ exit
 passwd: данные аутентификации успешно обновлены.
 [root@localhost ~]# su user_with_group
 bash-4.4$ systemctl restart chronyd
-6.
+6. Вывод команды iostat -x в последней колонке показывает загрузку дисков в процентах. Откуда утилита это понимает?
+ Достаточно ли вывода команды iostat -x для того, чтобы оценить реальную нагрузку на диски,  или нужны дополнительные условия или ключи?
   %util считается как процентное отношение к Ticks, deltams. 
 busy = 100.0 * blkio.ticks / deltams; /* percentage! */
 if (busy > 100.0) busy = 100.0;
