@@ -69,19 +69,19 @@ HW4
 
    [root@localhost ~]# ps aux
 
-   root       19630  0.1  0.0 222664  3232 pts/0    S    19:32   0:00 /bin/bash ./endless.sh
+       root       19630  0.1  0.0 222664  3232 pts/0    S    19:32   0:00 /bin/bash ./endless.sh
 
 4. Убить процесс, запущенный в фоновом режиме
 
    [root@localhost ~]# kill 19630
    
-   [1]+  Terminated              ./endless.sh > output.txt
+       [1]+  Terminated              ./endless.sh > output.txt
 
 5. Написать свой сервис под управлением systemd, добавить его в автозагрузку (можно использовать процесс из п.2)
 
   [root@localhost ~]# systemctl status endless.service
   
-  ● endless.service - Service test
+      ● endless.service - Service test
   
      Loaded: loaded (/etc/systemd/system/endless.service; enabled; vendor preset:>
      Active: failed (Result: exit-code) since Mon 2023-07-31 20:29:41 +03; 16min >
@@ -98,10 +98,7 @@ HW4
 
    [root@localhost ~]# journalctl -eu endless.service
 
-    -- Logs begin at Mon 2023-07-31 20:29:14 +03, end at Mon 2023-07-31 21:02:11 +03. --
-   
-    июл 31 20:29:40 localhost.localdomain systemd[1]: Started Service test.
-   
-    июл 31 20:29:41 localhost.localdomain systemd[1]: endless.service: Main process exited, code=exited, status=203/EXEC
-   
-    июл 31 20:29:41 localhost.localdomain systemd[1]: endless.service: Failed with result 'exit-code'.
+        -- Logs begin at Mon 2023-07-31 20:29:14 +03, end at Mon 2023-07-31 21:02:11 +03. --
+       июл 31 20:29:40 localhost.localdomain systemd[1]: Started Service test.
+       июл 31 20:29:41 localhost.localdomain systemd[1]: endless.service: Main process exited, code=exited, status=203/EXEC
+       июл 31 20:29:41 localhost.localdomain systemd[1]: endless.service: Failed with result 'exit-code'.
