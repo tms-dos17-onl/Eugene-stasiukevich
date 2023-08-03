@@ -58,11 +58,11 @@ HW4
 
    [root@localhost ~]# ./endless.sh > output.txt  &
 
-    [2] 17739
+        [2] 17739
 
    [root@localhost ~]# jobs
    
-    [1]+  Запущен          ./endless.sh > output.txt &
+        [1]+  Запущен          ./endless.sh > output.txt &
 
 
 3. Убедиться, что процесс продолжил работу после завершения сессии
