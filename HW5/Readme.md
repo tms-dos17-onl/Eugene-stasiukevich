@@ -1,4 +1,4 @@
-##1. Распределить основные сетевые протоколы (перечислены ниже) по уровням модели TCP/IP
+## 1. Распределить основные сетевые протоколы (перечислены ниже) по уровням модели TCP/IP
 ```
 UDP - Транспортный
 TCP - Транспортный
@@ -10,7 +10,7 @@ HTTP - Прикладной
 NTP - Прикладной
 SSH - Прикладной
 ```
-##2. Узнать pid процесса и длительность подключения ssh с помощью утилиты ss
+## 2. Узнать pid процесса и длительность подключения ssh с помощью утилиты ss
 ```
 [root@localhost ~]# lsof -n -a -itcp -stcp:established -c sshd
 COMMAND   PID USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
@@ -20,7 +20,7 @@ sshd    54160 root    4u  IPv4 359955      0t0  TCP 192.168.100.97:ssh->192.168.
 Netid       Recv-Q       Send-Q              Local Address:Port              Peer Address:Port       Process      
 tcp         0            0                  192.168.100.97:ssh              192.168.100.2:63525       timer:(keepalive,100min,0)
 ```
-##3. Закрыть все порты для входящих подключений, кроме ssh
+## 3. Закрыть все порты для входящих подключений, кроме ssh
 ```
 [root@localhost ~]# # iptables -A INPUT -p tcp --dport 22 -j ACCEPT
 [root@localhost ~]# iptables -L
@@ -66,7 +66,7 @@ Chain LIBVIRT_FWX (1 references)
 target     prot opt source               destination         
 ACCEPT     all  --  anywhere             anywhere
 ```
-##4. Установить telnetd на ВМ, зайти на нее с другой ВМ с помощью telnet и отловить вводимый пароль и вводимые команды при входе c помощью tcpdump
+## 4. Установить telnetd на ВМ, зайти на нее с другой ВМ с помощью telnet и отловить вводимый пароль и вводимые команды при входе c помощью tcpdump
 ```
 [root@localhost ~]# yum install telnet telnet-server -y
 Последняя проверка окончания срока действия метаданных: 1:11:31 назад, Чт 10 авг 2023 19:26:41.
