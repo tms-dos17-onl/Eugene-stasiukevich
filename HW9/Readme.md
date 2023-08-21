@@ -126,9 +126,7 @@ traceroute to google.com (192.178.25.174), 30 hops max, 60 byte packets
 ```
 ## 9. Создать в Nexus proxy репозиторий для пакетов ОС и разрешить анонимный доступ.
 ```
-x-special/nautilus-clipboard
-copy
-file:///root/Downloads/photo_5411268277809826976_y.jpg
+![VirtualBox_Centos7_21_08_2023_20_31_52](https://github.com/tms-dos17-onl/Eugene-stasiukevich/assets/100120414/ebf1ea3a-80d7-4f05-a3b0-e9a9e7c4bef8)
 ```
 
 
