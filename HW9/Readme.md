@@ -113,5 +113,22 @@ traceroute to google.com (192.178.25.174), 30 hops max, 60 byte packets
 ```
 ## 8. Установить Sonatype Nexus OSS по следующей инструкции, а именно:
 ```
+[root@localhost ~]# systemctl status nexus
+● nexus1.service - LSB: nexus
+   Loaded: loaded (/etc/rc.d/init.d/nexus1; generated)
+   Active: active (running) since Mon 2023-08-21 19:11:29 +03; 1h 12min ago
+     Docs: man:systemd-sysv-generator(8)
+  Process: 32464 ExecStart=/etc/rc.d/init.d/nexus1 start (code=exited, status=0>
+    Tasks: 94 (limit: 23216)
+   Memory: 1.1G
+   CGroup: /system.slice/nexus1.service
+           └─32721 /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.362.b08-3.el8.x86_64/j>
+```
+## 9. Создать в Nexus proxy репозиторий для пакетов ОС и разрешить анонимный доступ.
+```
+x-special/nautilus-clipboard
+copy
+file:///root/Downloads/photo_5411268277809826976_y.jpg
+```
 
 
