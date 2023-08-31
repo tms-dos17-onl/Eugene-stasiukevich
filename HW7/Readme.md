@@ -1,4 +1,4 @@
-##1. Вывести список всех удаленных репозиториев для локального.
+## 1. Вывести список всех удаленных репозиториев для локального.
 
   ```
 
@@ -8,7 +8,7 @@
 
   ```
 
-##2. Вывести список всех веток.
+## 2. Вывести список всех веток.
 
   ```
 
@@ -18,7 +18,7 @@
   remotes/origin/main
   ```
 
-##3. Вывести последние 3 коммитa с помощью git log.
+## 3. Вывести последние 3 коммитa с помощью git log.
 
   ```
 
@@ -38,7 +38,7 @@
 
   ```
 
-##4. Создать пустой файл README.md и сделать коммит.
+## 4. Создать пустой файл README.md и сделать коммит.
 
   ```
 
@@ -56,7 +56,7 @@
 
   ```
 
-##5. Добавить фразу "Hello, DevOps" в README.md файл и сделать коммит.
+## 5. Добавить фразу "Hello, DevOps" в README.md файл и сделать коммит.
 
   ```
 
@@ -71,7 +71,7 @@
 
   ```
 
-##6. Сделать реверт последнего коммита. Вывести последние 3 коммитa с помощью git log.
+## 6. Сделать реверт последнего коммита. Вывести последние 3 коммитa с помощью git log.
 
   ```
 
@@ -95,7 +95,7 @@
    1 file changed, 1 deletion(-)
 
   ```
-##7. Удалить последние 3 коммита с помощью git reset.
+## 7. Удалить последние 3 коммита с помощью git reset.
 
   ```
 
@@ -104,7 +104,7 @@
    HEAD is now at 8fd7016 Create Readme.md
 
   ```
-##8. Вернуть коммит, где добавляется пустой файл README.md. Для этого найти ID коммита в git reflog, а затем сделать cherry-pick.
+## 8. Вернуть коммит, где добавляется пустой файл README.md. Для этого найти ID коммита в git reflog, а затем сделать cherry-pick.
 
   ```
 
@@ -118,7 +118,7 @@
 
   ```
 
-##9. Удалить последний коммит с помощью git reset.
+## 9. Удалить последний коммит с помощью git reset.
 
   ```
 
@@ -127,15 +127,35 @@
 
   ```
 
-##10.  Переключиться на ветку main или master. Если ветка называется master, то переименовать её в main.
+## 10.  Переключиться на ветку main или master. Если ветка называется master, то переименовать её в main.
 
 
-##11.  Скопировать файл https://github.com/tms-dos17-onl/_sandbox/blob/main/.github/workflows/validate-shell.yaml, положить его по такому же относительному пути в репозиторий. Создать коммит и запушить его в удаленный репозиторий.
+## 11.  Скопировать файл https://github.com/tms-dos17-onl/_sandbox/blob/main/.github/workflows/validate-shell.yaml, положить его по такому же относительному пути в репозиторий. Создать коммит и запушить его в удаленный репозиторий.
 ```
+User@DESKTOP-R7EM63B MINGW64 /f/Git/Eugene-stasiukevich (main)
+$ git commit -m "Homework_7"
+[main 2944bd7] Homework_7
+ 1 file changed, 24 insertions(+)
+ create mode 100644 .github/workflows/validate-shell.yaml
+
+User@DESKTOP-R7EM63B MINGW64 /f/Git/Eugene-stasiukevich (main)
+$ git push origin main
+Enumerating objects: 9, done.
+Counting objects: 100% (9/9), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (7/7), 910 bytes | 910.00 KiB/s, done.
+Total 7 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To https://github.com/tms-dos17-onl/Eugene-stasiukevich.git
+   a34e593..07c4ab1  main -> main
+
+
+
 
 ```
     
-##12. Создать из ветки main ветку develop. Переключиться на неё и создать README.md в корне репозитория. Написать в этом файле какие инструменты DevOps вам знакомы и с какими вы бы хотели познакомиться больше всего (2-3 пункта).
+## 12. Создать из ветки main ветку develop. Переключиться на неё и создать README.md в корне репозитория. Написать в этом файле какие инструменты DevOps вам знакомы и с какими вы бы хотели познакомиться больше всего (2-3 пункта).
 
   ```
 
@@ -242,11 +262,11 @@
 
    ```
  
- ##14. Переключиться обратно на ветку main и создать там файл LICENSE с содержимым https://github.com/git/git-scm.com/blob/main/MIT-LICENSE.txt. Создать коммит. Вывести последние 3 коммитa.
+ ## 14. Переключиться обратно на ветку main и создать там файл LICENSE с содержимым https://github.com/git/git-scm.com/blob/main/MIT-LICENSE.txt. Создать коммит. Вывести последние 3 коммитa.
 
     
 
-##15.  Сделать merge ветки support в ветку main и решить конфликты путем выбора содержимого только одной лицензии.
+## 15.  Сделать merge ветки support в ветку main и решить конфликты путем выбора содержимого только одной лицензии.
 
   ```
 
@@ -276,7 +296,7 @@
 
   ```
 
-##16. Переключиться на ветку develop и сделать rebase относительно ветки main.
+## 16. Переключиться на ветку develop и сделать rebase относительно ветки main.
 
   ```
    admin@DESKTOP-G2VZH6VL MINGW64 /d/DevOps/Eugene-stasiukevich (main)
@@ -288,7 +308,7 @@
 
   ```
 
-##17. Вывести историю последних 10 коммитов в виде графа с помощью команды git log -10 --oneline --graph.
+## 17. Вывести историю последних 10 коммитов в виде графа с помощью команды git log -10 --oneline --graph.
 
   ```
 
@@ -311,7 +331,7 @@
 
   ```
 
-##18. Запушить ветку develop. В истории коммитов должен быть мерж support -> main.
+## 18. Запушить ветку develop. В истории коммитов должен быть мерж support -> main.
 
   ```
   
@@ -329,7 +349,7 @@
 
   ```
 
-##19. Зайти в свой репозиторий на GitHub и создать Pull Request из ветки develop в ветку main.
+## 19. Зайти в свой репозиторий на GitHub и создать Pull Request из ветки develop в ветку main.
     
 
 
