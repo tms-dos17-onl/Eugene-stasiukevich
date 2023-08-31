@@ -13,6 +13,70 @@
 Created symlink /etc/systemd/system/multi-user.target.wants/httpd.service → /usr/lib/systemd/system/httpd.service.
 [root@localhost ~]# service httpd start
 Redirecting to /bin/systemctl start httpd.service
+
+[root@localhost ~]# nano /var/www/html/index.php
+[root@localhost ~]# yum install php
+Последняя проверка окончания срока действия метаданных: 0:03:11 назад, Чт 31 авг 2023 14:50:06.
+Зависимости разрешены.
+================================================================================
+ Пакет        Архитектура
+                       Версия                                 Репозиторий Размер
+================================================================================
+Установка:
+ php          x86_64   7.2.24-1.module_el8.2.0+313+b04d0a66   appstream   1.5 M
+Установка зависимостей:
+ php-cli      x86_64   7.2.24-1.module_el8.2.0+313+b04d0a66   appstream   3.1 M
+ php-common   x86_64   7.2.24-1.module_el8.2.0+313+b04d0a66   appstream   661 k
+Установка слабых зависимостей:
+ php-fpm      x86_64   7.2.24-1.module_el8.2.0+313+b04d0a66   appstream   1.6 M
+Включение потоков модулей:
+ php                   7.2                                                     
+
+Результат транзакции
+================================================================================
+Установка  4 Пакета
+
+Объем загрузки: 6.9 M
+Объем изменений: 25 M
+Продолжить? [д/Н]: y
+Загрузка пакетов:
+(1/4): php-common-7.2.24-1.module_el8.2.0+313+b 2.2 MB/s | 661 kB     00:00    
+(2/4): php-7.2.24-1.module_el8.2.0+313+b04d0a66 3.9 MB/s | 1.5 MB     00:00    
+(3/4): php-fpm-7.2.24-1.module_el8.2.0+313+b04d 4.0 MB/s | 1.6 MB     00:00    
+(4/4): php-cli-7.2.24-1.module_el8.2.0+313+b04d 4.0 MB/s | 3.1 MB     00:00    
+--------------------------------------------------------------------------------
+Общий размер                                    6.4 MB/s | 6.9 MB     00:01     
+Проверка транзакции
+Проверка транзакции успешно завершена.
+Идет проверка транзакции
+Тест транзакции проведен успешно
+Выполнение транзакции
+  Подготовка       :                                                        1/1 
+  Установка        : php-common-7.2.24-1.module_el8.2.0+313+b04d0a66.x86_   1/4 
+  Установка        : php-cli-7.2.24-1.module_el8.2.0+313+b04d0a66.x86_64    2/4 
+  Установка        : php-fpm-7.2.24-1.module_el8.2.0+313+b04d0a66.x86_64    3/4 
+  Запуск скриптлета: php-fpm-7.2.24-1.module_el8.2.0+313+b04d0a66.x86_64    3/4 
+  Установка        : php-7.2.24-1.module_el8.2.0+313+b04d0a66.x86_64        4/4 
+  Запуск скриптлета: php-7.2.24-1.module_el8.2.0+313+b04d0a66.x86_64        4/4 
+/sbin/ldconfig: /usr/lib64/llvm15/lib/libclang.so.15 is not a symbolic link
+
+
+  Запуск скриптлета: php-fpm-7.2.24-1.module_el8.2.0+313+b04d0a66.x86_64    4/4 
+  Проверка         : php-7.2.24-1.module_el8.2.0+313+b04d0a66.x86_64        1/4 
+  Проверка         : php-cli-7.2.24-1.module_el8.2.0+313+b04d0a66.x86_64    2/4 
+  Проверка         : php-common-7.2.24-1.module_el8.2.0+313+b04d0a66.x86_   3/4 
+  Проверка         : php-fpm-7.2.24-1.module_el8.2.0+313+b04d0a66.x86_64    4/4 
+
+Установлен:
+  php-7.2.24-1.module_el8.2.0+313+b04d0a66.x86_64                               
+  php-cli-7.2.24-1.module_el8.2.0+313+b04d0a66.x86_64                           
+  php-common-7.2.24-1.module_el8.2.0+313+b04d0a66.x86_64                        
+  php-fpm-7.2.24-1.module_el8.2.0+313+b04d0a66.x86_64                           
+
+Выполнено!
+[root@localhost ~]# service httpd restart
+Redirecting to /bin/systemctl restart httpd.service
+
 ```
 ## 2. Установить Nginx на VM.
 ```
@@ -137,4 +201,6 @@ Redirecting to /bin/systemctl status nginx.service
 авг 31 00:21:20 localhost.localdomain nginx[236461]: nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
 авг 31 00:21:20 localhost.localdomain nginx[236461]: nginx: configuration file /etc/nginx/nginx.conf test is successful
 авг 31 00:21:20 localhost.localdomain systemd[1]: Started The nginx HTTP and reverse proxy server.
+```
+## 3. Скопировать папку https://github.com/tms-dos17-onl/_sandbox/tree/main/lecture15/react_nginx/build на VM и настроить Nginx на хостинг этого веб-приложения. Проверить работоспособность приложения путем посещения всех доступных ссылок на главной странице и обновления каждой из страниц в веб-браузере.
 ```
