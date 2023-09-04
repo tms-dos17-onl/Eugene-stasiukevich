@@ -245,3 +245,117 @@ server {
         }
     }
 ```
+## 4. Скопировать папку https://github.com/tms-dos17-onl/_sandbox/tree/main/lecture15/api на VM и запустить Python REST Api приложение согласно инструкции. Проверить работоспособность всех доступных REST Api методов с помощью Swagger.
+```
+[root@localhost ~]# cd /root/api
+[root@localhost api]# python3 -m venv .venv
+[root@localhost api]# source .venv/bin/activate
+(.venv) [root@localhost api]# python3 -m pip install -r requirements.txt
+Collecting Flask==2.3.2 (from -r requirements.txt (line 1))
+  Cache entry deserialization failed, entry ignored
+  Could not find a version that satisfies the requirement Flask==2.3.2 (from -r requirements.txt (line 1)) (from versions: 0.1, 0.2, 0.3, 0.3.1, 0.4, 0.5, 0.5.1, 0.5.2, 0.6, 0.6.1, 0.7, 0.7.1, 0.7.2, 0.8, 0.8.1, 0.9, 0.10, 0.10.1, 0.11, 0.11.1, 0.12, 0.12.1, 0.12.2, 0.12.3, 0.12.4, 0.12.5, 1.0, 1.0.1, 1.0.2, 1.0.3, 1.0.4, 1.1.0, 1.1.1, 1.1.2, 1.1.3, 1.1.4, 2.0.0rc1, 2.0.0rc2, 2.0.0, 2.0.1, 2.0.2, 2.0.3)
+No matching distribution found for Flask==2.3.2 (from -r requirements.txt (line 1))
+You are using pip version 9.0.3, however version 23.2.1 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+(.venv) [root@localhost api]# python3.8 -m pip install -r requirements.txt
+Collecting Flask==2.3.2
+  Downloading Flask-2.3.2-py3-none-any.whl (96 kB)
+     |████████████████████████████████| 96 kB 797 kB/s 
+Collecting flasgger==0.9.7.1
+  Downloading flasgger-0.9.7.1.tar.gz (4.0 MB)
+     |████████████████████████████████| 4.0 MB 6.6 MB/s 
+Collecting requests==2.31.0
+  Downloading requests-2.31.0-py3-none-any.whl (62 kB)
+     |████████████████████████████████| 62 kB 1.2 MB/s 
+Collecting itsdangerous>=2.1.2
+  Downloading itsdangerous-2.1.2-py3-none-any.whl (15 kB)
+Collecting click>=8.1.3
+  Downloading click-8.1.7-py3-none-any.whl (97 kB)
+     |████████████████████████████████| 97 kB 6.0 MB/s 
+Collecting Jinja2>=3.1.2
+  Downloading Jinja2-3.1.2-py3-none-any.whl (133 kB)
+     |████████████████████████████████| 133 kB 12.2 MB/s 
+Collecting Werkzeug>=2.3.3
+  Downloading werkzeug-2.3.7-py3-none-any.whl (242 kB)
+     |████████████████████████████████| 242 kB 12.5 MB/s 
+Collecting blinker>=1.6.2
+  Downloading blinker-1.6.2-py3-none-any.whl (13 kB)
+Collecting importlib-metadata>=3.6.0
+  Downloading importlib_metadata-6.8.0-py3-none-any.whl (22 kB)
+Collecting PyYAML>=3.0
+  Downloading PyYAML-6.0.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (736 kB)
+     |████████████████████████████████| 736 kB 12.9 MB/s 
+Collecting jsonschema>=3.0.1
+  Downloading jsonschema-4.19.0-py3-none-any.whl (83 kB)
+     |████████████████████████████████| 83 kB 3.7 MB/s 
+Collecting mistune
+  Downloading mistune-3.0.1-py3-none-any.whl (47 kB)
+     |████████████████████████████████| 47 kB 4.5 MB/s 
+Collecting six>=1.10.0
+  Downloading six-1.16.0-py2.py3-none-any.whl (11 kB)
+Collecting packaging
+  Downloading packaging-23.1-py3-none-any.whl (48 kB)
+     |████████████████████████████████| 48 kB 4.3 MB/s 
+Collecting urllib3<3,>=1.21.1
+  Downloading urllib3-2.0.4-py3-none-any.whl (123 kB)
+     |████████████████████████████████| 123 kB 16.2 MB/s 
+Collecting idna<4,>=2.5
+  Downloading idna-3.4-py3-none-any.whl (61 kB)
+     |████████████████████████████████| 61 kB 124 kB/s 
+Collecting certifi>=2017.4.17
+  Downloading certifi-2023.7.22-py3-none-any.whl (158 kB)
+     |████████████████████████████████| 158 kB 13.3 MB/s 
+Collecting charset-normalizer<4,>=2
+  Downloading charset_normalizer-3.2.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (199 kB)
+     |████████████████████████████████| 199 kB 10.9 MB/s 
+Collecting zipp>=0.5
+  Downloading zipp-3.16.2-py3-none-any.whl (7.2 kB)
+Collecting MarkupSafe>=2.0
+  Downloading MarkupSafe-2.1.3-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (25 kB)
+Collecting attrs>=22.2.0
+  Downloading attrs-23.1.0-py3-none-any.whl (61 kB)
+     |████████████████████████████████| 61 kB 9.3 MB/s 
+Collecting pkgutil-resolve-name>=1.3.10
+  Downloading pkgutil_resolve_name-1.3.10-py3-none-any.whl (4.7 kB)
+Collecting jsonschema-specifications>=2023.03.6
+  Downloading jsonschema_specifications-2023.7.1-py3-none-any.whl (17 kB)
+Collecting referencing>=0.28.4
+  Downloading referencing-0.30.2-py3-none-any.whl (25 kB)
+Collecting rpds-py>=0.7.1
+  Downloading rpds_py-0.10.2-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.2 MB)
+     |████████████████████████████████| 1.2 MB 13.1 MB/s 
+Collecting importlib-resources>=1.4.0
+  Downloading importlib_resources-6.0.1-py3-none-any.whl (34 kB)
+Using legacy 'setup.py install' for flasgger, since package 'wheel' is not installed.
+Installing collected packages: zipp, rpds-py, attrs, referencing, MarkupSafe, importlib-resources, Werkzeug, pkgutil-resolve-name, jsonschema-specifications, Jinja2, itsdangerous, importlib-metadata, click, blinker, urllib3, six, PyYAML, packaging, mistune, jsonschema, idna, Flask, charset-normalizer, certifi, requests, flasgger
+    Running setup.py install for flasgger ... done
+Successfully installed Flask-2.3.2 Jinja2-3.1.2 MarkupSafe-2.1.3 PyYAML-6.0.1 Werkzeug-2.3.7 attrs-23.1.0 blinker-1.6.2 certifi-2023.7.22 charset-normalizer-3.2.0 click-8.1.7 flasgger-0.9.7.1 idna-3.4 importlib-metadata-6.8.0 importlib-resources-6.0.1 itsdangerous-2.1.2 jsonschema-4.19.0 jsonschema-specifications-2023.7.1 mistune-3.0.1 packaging-23.1 pkgutil-resolve-name-1.3.10 referencing-0.30.2 requests-2.31.0 rpds-py-0.10.2 six-1.16.0 urllib3-2.0.4 zipp-3.16.2
+WARNING: Running pip as root will break packages and permissions. You should install packages reliably by using venv: https://pip.pypa.io/warnings/venv
+WARNING: You are using pip version 21.1.1; however, version 23.2.1 is available.
+You should consider upgrading via the '/usr/local/bin/python3.8 -m pip install --upgrade pip' command.
+(.venv) [root@localhost api]# python3.8 main.py
+ * Serving Flask app 'main'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.100.97:5000
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 794-703-785
+```
+![VirtualBox_Centos7_04_09_2023_22_18_52](https://github.com/tms-dos17-onl/Eugene-stasiukevich/assets/100120414/4171d551-9cdd-4ef1-ab55-9fb43baedd40)
+![VirtualBox_Centos7_04_09_2023_22_19_11](https://github.com/tms-dos17-onl/Eugene-stasiukevich/assets/100120414/f39275e9-8f14-438d-b1df-f4e049104e3f)
+![VirtualBox_Centos7_04_09_2023_22_19_27](https://github.com/tms-dos17-onl/Eugene-stasiukevich/assets/100120414/97f9c68b-23ce-447b-8bb7-937f729be8d6)
+![VirtualBox_Centos7_04_09_2023_22_19_39](https://github.com/tms-dos17-onl/Eugene-stasiukevich/assets/100120414/0676d6e2-d1ae-4589-a9c3-f71a0319d065)
+![VirtualBox_Centos7_04_09_2023_22_20_05](https://github.com/tms-dos17-onl/Eugene-stasiukevich/assets/100120414/d01bf9cb-8a4e-46a8-b131-6823e0e66bc7)
+## 5. Настроить Nginx как Reverse Proxy для Python REST Api приложения из предыдущего пункта. А затем:
+## - Открыть Swagger для веб-приложения через Nginx (http://<NGINX_IP>:<NGINX_PORT>/apidocs).
+## - Проверить работоспособность всех доступных REST Api методов через Nginx с помощью Swagger. Убедиться, что нет ошибок ни в выводе Rest Api приложения, ни в HTTP ответе     в Swagger. При необходимости поправить конфигурацию Nginx сервера, чтобы все методы работали.
+## - Для тестирования метода /uploadFile использовать файл размером больше 1MB.
+## - Вывести в консоль содержимое файла конфигурации Nginx с измененными значениями и комментариями.
+```
+
+
+
