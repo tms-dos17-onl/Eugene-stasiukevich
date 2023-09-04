@@ -199,7 +199,7 @@ To https://github.com/tms-dos17-onl/Eugene-stasiukevich.git
 
   ```
 
-##13. Создать из ветки main ветку support и создать там файл LICENSE с содержимым https://www.apache.org/licenses/LICENSE-2.0.txt. Создать коммит. Вывести последние 3 коммитa.
+## 13. Создать из ветки main ветку support и создать там файл LICENSE с содержимым https://www.apache.org/licenses/LICENSE-2.0.txt. Создать коммит. Вывести последние 3 коммитa.
 
   ```
 
