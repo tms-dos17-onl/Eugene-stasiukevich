@@ -203,11 +203,12 @@ Redirecting to /bin/systemctl status nginx.service
 авг 31 00:21:20 localhost.localdomain systemd[1]: Started The nginx HTTP and reverse proxy server.
 ```
 ## 3. Скопировать папку https://github.com/tms-dos17-onl/_sandbox/tree/main/lecture15/react_nginx/build на VM и настроить Nginx на хостинг этого веб-приложения. Проверить работоспособность приложения путем посещения всех доступных ссылок на главной странице и обновления каждой из страниц в веб-браузере.
-```
+
 ![VirtualBox_Centos7_04_09_2023_19_21_07](https://github.com/tms-dos17-onl/Eugene-stasiukevich/assets/100120414/dff65db6-9ec6-4f0d-8df1-6440a592fd0e)
 ![VirtualBox_Centos7_04_09_2023_19_21_18](https://github.com/tms-dos17-onl/Eugene-stasiukevich/assets/100120414/91a76a4f-a551-4e09-a559-c85f838fe1d4)
 ![VirtualBox_Centos7_04_09_2023_19_21_27](https://github.com/tms-dos17-onl/Eugene-stasiukevich/assets/100120414/12721eb5-d6df-4a3a-91db-69f673739557)
 
+```
 [root@localhost ~]# ls -la /var/www/build/html
 итого 44
 drwxr-xr-x. 3 root root  177 сен  1 07:59 .
