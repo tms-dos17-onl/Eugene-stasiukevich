@@ -204,3 +204,43 @@ Redirecting to /bin/systemctl status nginx.service
 ```
 ## 3. Скопировать папку https://github.com/tms-dos17-onl/_sandbox/tree/main/lecture15/react_nginx/build на VM и настроить Nginx на хостинг этого веб-приложения. Проверить работоспособность приложения путем посещения всех доступных ссылок на главной странице и обновления каждой из страниц в веб-браузере.
 ```
+![VirtualBox_Centos7_04_09_2023_19_21_07](https://github.com/tms-dos17-onl/Eugene-stasiukevich/assets/100120414/dff65db6-9ec6-4f0d-8df1-6440a592fd0e)
+![VirtualBox_Centos7_04_09_2023_19_21_18](https://github.com/tms-dos17-onl/Eugene-stasiukevich/assets/100120414/91a76a4f-a551-4e09-a559-c85f838fe1d4)
+![VirtualBox_Centos7_04_09_2023_19_21_27](https://github.com/tms-dos17-onl/Eugene-stasiukevich/assets/100120414/12721eb5-d6df-4a3a-91db-69f673739557)
+
+[root@localhost ~]# ls -la /var/www/build/html
+итого 44
+drwxr-xr-x. 3 root root  177 сен  1 07:59 .
+drwxr-xr-x. 3 root root   18 сен  1 07:59 ..
+-rw-r--r--. 1 root root  497 авг 28 14:27 50x.html
+-rw-r--r--. 1 root root  366 авг 28 14:27 asset-manifest.json
+-rw-r--r--. 1 root root 3870 авг 28 14:27 favicon.ico
+-rw-r--r--. 1 root root  584 авг 28 14:27 index.html
+-rw-r--r--. 1 root root 5347 авг 28 14:27 logo192.png
+-rw-r--r--. 1 root root 9664 авг 28 14:27 logo512.png
+-rw-r--r--. 1 root root  492 авг 28 14:27 manifest.json
+-rw-r--r--. 1 root root   67 авг 28 14:27 robots.txt
+drwxr-xr-x. 3 root root   16 авг 28 14:27 static
+
+[root@localhost ~]# cat /etc/nginx/conf.d/temp.conf
+server {
+        listen       81 default_server;
+        listen       [::]:81 default_server;
+        server_name  _;
+        root         /var/www/build/html;
+
+        # Load configuration files for the default server block.
+        include /etc/nginx/default.d/*.conf;
+
+        location / {
+        }
+
+        error_page 404 /404.html;
+            location = /40x.html {
+        }
+
+        error_page 500 502 503 504 /50x.html;
+            location = /50x.html {
+        }
+    }
+```
