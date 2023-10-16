@@ -47,8 +47,6 @@ For more examples and ideas, visit:
   PS H:\DevOps> docker run -dit --rm --name nginx -p 9001:80 nginx
   93de863bc0aad814e8d0c3905e746f9d6e41c6338365118f83344ab6cedaefce
   ```
-  ![photo_2023-10-16_21-22-24](https://github.com/tms-dos17-onl/Eugene-stasiukevich/assets/100120414/da56f995-09e1-4ae4-a456-1e94fe25e676)
-
 ## 4. Изучить следующие команды и их флаги:
 - docker run (-i, -t, -d, --rm)
 - docker ps (-a, -l, -q)
