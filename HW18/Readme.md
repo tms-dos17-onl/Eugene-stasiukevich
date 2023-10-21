@@ -69,6 +69,23 @@ For more examples and ideas, visit:
  ```
 ## 5. Установить Nexus используя Docker образ
  ```
+PS H:\DevOps> docker pull sonatype/nexus
+Using default tag: latest
+latest: Pulling from sonatype/nexus
+a2745c55c3c1: Pull complete
+ce89c3e3a830: Pull complete
+1fb88ad0cd71: Pull complete
+8a9fe14b7534: Pull complete
+Digest: sha256:54702b1a275b8a458ae271cfaa616ccf68b135bcc89c63bf3111ff32fad1c23b
+Status: Downloaded newer image for sonatype/nexus:latest
+
+What's Next?
+  View a summary of image vulnerabilities and recommendations → docker scout quickview sonatype/nexus
+  PS H:\DevOps> cd nexus-data
+PS H:\DevOps\nexus-data> docker run -d -p 8081:8081 --name nexus -v nexus-data:/nexus-data sonatype/nexus3
+626aef3ef0902a18fb8336752145eff3da55e4d2e3545aba11005babfcb2b5f5
  ```
+![image](https://github.com/tms-dos17-onl/Eugene-stasiukevich/assets/100120414/d8a49a1b-1897-43f3-8e53-9b0f8f076bdf)
+
 ## 6. Установить Jenkins используя Docker образ
  ```
