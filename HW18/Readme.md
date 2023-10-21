@@ -105,4 +105,28 @@ For more examples and ideas, visit:
 
 
 ## 6. Установить Jenkins используя Docker образ
+
  ```
+PS H:\DevOps\nexus-data> docker pull jenkins/jenkins
+Using default tag: latest
+latest: Pulling from jenkins/jenkins
+0a9573503463: Pull complete
+1cdc1811baee: Pull complete
+3fa5e8773761: Pull complete
+3650dd122ffb: Pull complete
+66f00e939517: Pull complete
+c5c89718f699: Pull complete
+b4b31f4a2810: Pull complete
+bf15702f2535: Pull complete
+4a9169297eb5: Pull complete
+1cb861394516: Pull complete
+249f2d1f9ad5: Pull complete
+fb002adb1777: Pull complete
+Digest: sha256:b728c15f3d9aa442b9ab5d6d6e75f2e5663e4a14f22dfcdac35f83245e76b343
+Status: Downloaded newer image for jenkins/jenkins:latest
+docker.io/jenkins/jenkins:latest
+
+What's Next?
+View a summary of image vulnerabilities and recommendations → docker scout quickview jenkins/jenkins
+
+  
