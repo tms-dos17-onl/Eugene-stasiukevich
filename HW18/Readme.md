@@ -98,6 +98,9 @@ For more examples and ideas, visit:
    PS H:\DevOps\nexus-data> docker run -d -p 8081:8081 --name nexus -v nexus-data:/nexus-data sonatype/nexus3
    
    626aef3ef0902a18fb8336752145eff3da55e4d2e3545aba11005babfcb2b5f5
+PS H:\DevOps> docker ps
+CONTAINER ID   IMAGE             COMMAND                  CREATED          STATUS              PORTS                    NAMES
+20ed1d385c18   sonatype/nexus3   "/opt/sonatype/nexus…"   31 minutes ago   Up About a minute   0.0.0.0:8081->8081/tcp   nexus
    
   ```
 
