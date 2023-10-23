@@ -53,7 +53,8 @@ For more examples and ideas, visit:
 - docker images
 - docker start/docker stop/docker restart
 - docker exec
-  ```
+  
+```
   - docker run:
   -i - Держит STDIN открытым, даже если он не подключен.
   -t - Выделение псевдо-TTY
@@ -69,10 +70,7 @@ For more examples and ideas, visit:
  ```
 
 ## 5. Установить Nexus используя Docker образ
-
- ![image](https://github.com/tms-dos17-onl/Eugene-stasiukevich/assets/100120414/d8a49a1b-1897-43f3-8e53-9b0f8f076bdf)
-
-  ```
+```
   PS H:\DevOps> docker pull sonatype/nexus
   
   Using default tag: latest
