@@ -105,8 +105,24 @@ For more examples and ideas, visit:
 ## 6. Установить Jenkins используя Docker образ
 
  ```
-PS H:\DevOps\nexus-data> docker pull jenkins/jenkins
+PS H:\DevOps> docker pull jenkins/jenkins
 Using default tag: latest
+latest: Pulling from jenkins/jenkins
+0a9573503463: Already exists
+1cdc1811baee: Already exists
+3fa5e8773761: Already exists
+3650dd122ffb: Already exists
+66f00e939517: Already exists
+c5c89718f699: Extracting [==================================================>]  89.41MB/89.41MB
+b4b31f4a2810: Download complete
+bf15702f2535: Download complete
+4a9169297eb5: Download complete
+1cb861394516: Download complete
+249f2d1f9ad5: Download complete
+fb002adb1777: Download complete
+any levels of symbolic links
+PS H:\DevOps> docker run -d -p 8080:8080 -p 50000:50000 --name my_jenkins jenkins/jenkins
+Unable to find image 'jenkins/jenkins:latest' locally
 latest: Pulling from jenkins/jenkins
 0a9573503463: Pull complete
 1cdc1811baee: Pull complete
@@ -122,9 +138,10 @@ bf15702f2535: Pull complete
 fb002adb1777: Pull complete
 Digest: sha256:b728c15f3d9aa442b9ab5d6d6e75f2e5663e4a14f22dfcdac35f83245e76b343
 Status: Downloaded newer image for jenkins/jenkins:latest
-docker.io/jenkins/jenkins:latest
-
-What's Next?
-View a summary of image vulnerabilities and recommendations → docker scout quickview jenkins/jenkins
+2ba95059ce93d2eb8b2bfd41a9ce2d9cae2a8366e204e18b720f1ebc20f02bd0
+PS H:\DevOps> docker ps
+CONTAINER ID   IMAGE             COMMAND                  CREATED         STATUS         PORTS                                              NAMES
+2ba95059ce93   jenkins/jenkins   "/usr/bin/tini -- /u…"   2 minutes ago   Up 2 minutes   0.0.0.0:8080->8080/tcp, 0.0.0.0:50000->50000/tcp   my_jenkins
+```
 
   
