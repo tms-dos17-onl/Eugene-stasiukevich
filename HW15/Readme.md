@@ -252,4 +252,86 @@ Processing triggers for man-db (2.10.2-1) ...
 Processing triggers for libc-bin (2.35-0ubuntu3.1) ...
 /sbin/ldconfig.real: /usr/lib/wsl/lib/libcuda.so.1 is not a symbolic link
 ```
+## 2. (**) Настроить Multi-Primary репликацию для MySQL на 2 VM согласно инструкции.
+```
+```
+## 3. Создать схему БД clinic и наполнить её данными используя скрипты из https://github.com/tms-dos17-onl/_sandbox/tree/main/lecture18/mysql/initdb.d/data.
+```
+mysql> source /home/evilsmile/HW18/schema.sql
+Query OK, 0 rows affected (0,00 sec)
+
+Query OK, 1 row affected (0,15 sec)
+
+Database changed
+Query OK, 0 rows affected (0,82 sec)
+
+Query OK, 0 rows affected (1,52 sec)
+
+Query OK, 0 rows affected (1,28 sec)
+
+Query OK, 0 rows affected (1,35 sec)
+
+Query OK, 0 rows affected (1,13 sec)
+
+Query OK, 0 rows affected (1,43 sec)
+
+Query OK, 0 rows affected (0,27 sec)
+
+Query OK, 0 rows affected (0,00 sec)
+
+mysql> use clinic
+Database changed
+mysql> SHOW TABLES;
++------------------+
+| Tables_in_clinic |
++------------------+
+| Appointment      |
+| Department       |
+| Doctor           |
+| Job              |
+| Patient          |
+| Room             |
++------------------+
+6 rows in set (0,01 sec)
+
+mysql> source /home/evilsmile/HW18/data.sql
+Query OK, 0 rows affected (0,00 sec)
+
+Database changed
+Query OK, 5 rows affected (0,00 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+Query OK, 6 rows affected (0,01 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+Query OK, 2 rows affected (0,00 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+Query OK, 6 rows affected (0,00 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+Query OK, 5 rows affected (0,01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+Query OK, 5 rows affected (0,00 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected (0,15 sec)
+
+mysql> SELECT * FROM Job;
++----+----------------------------------+------------+------------+---------------+-----------+
+| id | Title                            | StartDate  | EndDate    | Department_id | Doctor_id |
++----+----------------------------------+------------+------------+---------------+-----------+
+|  1 | Заведующий                       | 2010-01-01 | 2025-01-01 |             1 |         1 |
+|  2 | Заведующий                       | 2005-01-01 | 2025-01-01 |             2 |         2 |
+|  3 | Врач 1-й категории               | 2020-01-01 | 2025-01-01 |             2 |         3 |
+|  4 | Врач 2-й категории               | 2020-01-01 | 2025-01-01 |             1 |         4 |
+|  5 | Врач 2-й категории               | 2020-01-01 | 2025-01-01 |             1 |         5 |
+|  6 | Врач 2-й категории               | 2020-01-01 | 2025-01-01 |             1 |         6 |
++----+----------------------------------+------------+------------+---------------+-----------+
+6 rows in set (0,00 sec)
+```
+## 4. Создать бэкап базы данных clinic.
+```
+
 
