@@ -68,6 +68,19 @@ _gateway (192.168.100.1) at 60:f1:8a:3e:d2:14 [ether] on enp0s3
 - Каким будет широковещательный адрес в последней подсети? - 172.20.255.255
 ## 5. Найти IP адрес соответствующий доменному имени ya.ru. Выполнить HTTP запрос на указанный IP адрес, чтобы скачать страницу с помощью утилиты curl. В результате должна вывестись HTML страничка в консоль. Подсказка:
 ```
+evilsmile@Evilsmile:~$ nslookup ya.ru
+Server:		127.0.0.53
+Address:	127.0.0.53#53
+
+Non-authoritative answer:
+Name:	ya.ru
+Address: 5.255.255.242
+Name:	ya.ru
+Address: 77.88.55.242
+Name:	ya.ru
+Address: 2a02:6b8::2:242
+
+
 curl -o /root/homework 5.255.255.242 -LvH 'Host: ya.ru'
 ```
 
