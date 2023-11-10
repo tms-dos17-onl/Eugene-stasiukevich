@@ -229,5 +229,15 @@ secret.txt                                                                      
 ```
 ## 18. Вывести логи сервиса Firewall с помощью journalctl не прибегая к фильтрации с помощью grep.
 ```
-
+evilsmile@Evilsmile:~$ journalctl -u ufw.service
+мар 20 16:32:24 Evilsmile systemd[1]: Starting Uncomplicated firewall...
+мар 20 16:32:24 Evilsmile systemd[1]: Finished Uncomplicated firewall.
+-- Boot 96c489a8c39a4d6b9d285075a4a7e389 --
+мар 20 16:32:25 Evilsmile systemd[1]: Starting Uncomplicated firewall...
+-- Boot 00f51b26fb5e43c798588d9db37e00cd --
+ноя 09 20:01:42 Evilsmile systemd[1]: Starting Uncomplicated firewall...
+ноя 09 20:01:42 Evilsmile systemd[1]: Finished Uncomplicated firewall.
+-- Boot 96c489a8c39a4d6b9d285075a4a7e389 --
+ноя 09 20:49:55 Evilsmile systemd[1]: Finished Uncomplicated firewall.
+```
 
