@@ -338,10 +338,50 @@ evilsmile@Evilsmile:~$ mysqldump -u root clinic > /home/evilsmile/db_backup.sql
 ```
 ## 5. 5. Написать следующие SQL запросы:
 - Вывести всех врачей, работающих в терапевтическом отделении.
-- Вывести в каких отделениях побывал каждый пациент.
-- Обновить дату приёма для пациента Ивана Иванова на 2022-02-09.
-- Удалить врача Андрея Быкова и все его приёмы.
-- Добавить нового врача Фила Ричардса и новую пациентку Василису Васильеву и записать её к Филу Ричардсу на приём на 2022-02-14.
 ```
+mysql> SELECT Doctor.FirstName, Doctor.LastName
+    -> FROM ((Doctor INNER JOIN Job ON Doctor.id = Job.Doctor_id) INNER JOIN Department On Job.Department_id = Department.id)
+    -> WHERE Name = 'Терапевтический';
++----------------+--------------------+
+| FirstName      | LastName           |
++----------------+--------------------+
+| Андрей         | Быков              |
+| Варвара        | Черноус            |
+| Глеб           | Романенко          |
+| Семён          | Лобанов            |
++----------------+--------------------+
+4 rows in set (0,01 sec)
+```
+- Вывести в каких отделениях побывал каждый пациент.
+```
+mysql> SELECT DISTINCT Patient.FirstName, Patient.LastName, Department.Name
+    -> FROM (((Patient INNER JOIN Appointment ON Patient.id = Appointment.Patient_id)
+    -> INNER JOIN Room ON Appointment.Room_id = Room.id) INNER JOIN Department ON Room.Department_id = Department.id);
++------------+------------------+---------------------------------------------+
+| FirstName  | LastName         | Name                                        |
++------------+------------------+---------------------------------------------+
+| Пётр       | Петров           | Кожно-венерологический                      |
+| Сидор      | Сидоров          | Терапевтический                             |
+| Иван       | Иванов           | Кожно-венерологический                      |
+| Елена      | Попова           | Терапевтический                             |
+| Анна       | Семёнова         | Терапевтический                             |
++------------+------------------+---------------------------------------------+
+5 rows in set (0,12 sec)
+```
+- Обновить дату приёма для пациента Ивана Иванова на 2022-02-09.
+```
+mysql> UPDATE Appointment
+    -> SET Appointment.Date = '2022-02-09'
+    -> WHERE Appointment.Patient_id IN (SELECT Patient.id FROM Patient
+    -> WHERE Patient.FirstName = 'Иван' AND Patient.LastName =  'Иванов');
+Query OK, 1 row affected (0,36 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+```
+- Удалить врача Андрея Быкова и все его приёмы.
+```
+
+```
+- Добавить нового врача Фила Ричардса и новую пациентку Василису Васильеву и записать её к Филу Ричардсу на приём на 2022-02-14.
+
 
 
