@@ -390,7 +390,50 @@ Query OK, 2 rows affected (0,15 sec)
 ```
 - Добавить нового врача Фила Ричардса и новую пациентку Василису Васильеву и записать её к Филу Ричардсу на приём на 2022-02-14.
 ```
+mysql> INSERT INTO Doctor VALUES (7, 'Фил', 'Ричардс', '+37529xxxxxxx', 'doc_ric@clinic.com', '1988-01-01');
+mysql> INSERT INTO Patient VALUES (6, 'Василиса', 'Васильева', '1991-11-11', 'Буркино-Фасо', '+37529xxxxxxx', 'vasyaya.ru');
+Query OK, 1 row affected (0,23 sec)
 
+mysql> INSERT INTO Appointment VALUES (6, '2022-02-14', 6, 7, 1);
+Query OK, 1 row affected (0,14 sec)
+```
+## 6. Восстановить базу данных clinic из бэкапа и проверить, что данные соответствуют состоянию базы данных до внесенных в предыдущем задании изменений.
+```
+evilsmile@Evilsmile:~$ mysql -u root -p clinic < /home/evilsmile/db_backup.sql 
+Enter password: 
+evilsmile@Evilsmile:~$ mysql -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 21
+Server version: 8.0.35-0ubuntu0.22.04.1 (Ubuntu)
 
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use clinic
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> select * from Doctor;
++----+----------------+--------------------+---------------+-----------------------------+------------+
+| id | FirstName      | LastName           | Telephone     | Email                       | BirthDate  |
++----+----------------+--------------------+---------------+-----------------------------+------------+
+|  1 | Андрей         | Быков              | +37529XXXXXXX | andrey.bykov@clinic.com     | 1966-06-22 |
+|  2 | Иван           | Купитман           | +37529XXXXXXX | ivan.kupitman@clinic.com    | 1963-03-13 |
+|  3 | Дмитрий        | Левин              | +37529XXXXXXX | dmitry.levin@clinic.com     | 1986-01-15 |
+|  4 | Варвара        | Черноус            | +37529XXXXXXX | varvara.chernous@clinic.com | 1988-04-14 |
+|  5 | Глеб           | Романенко          | +37529XXXXXXX | gleb.romanenko@clinic.com   | 1984-09-19 |
+|  6 | Семён          | Лобанов            | +37529XXXXXXX | semen.lobanoff@clinic.com   | 1983-11-22 |
++----+----------------+--------------------+---------------+-----------------------------+------------+
+6 rows in set (0,00 sec)
+```
+## 7. Установить MongoDB
+```
 
 
