@@ -379,9 +379,18 @@ Rows matched: 1  Changed: 1  Warnings: 0
 ```
 - Удалить врача Андрея Быкова и все его приёмы.
 ```
+mysql> DELETE Doctor, Appointment FROM Doctor, Appointment WHERE Doctor.id = Appointment.Doctor_id AND Doctor.FirstName = 'Андрей' AND Doctor.LastName = 'Быков'
+;
+ERROR 1451 (23000): Cannot delete or update a parent row: a foreign key constraint fails (`clinic`.`Appointment`, CONSTRAINT `Appointment_ibfk_1` FOREIGN KEY (`Doctor_id`) REFERENCES `Doctor` (`id`))
+mysql> SET FOREIGN_KEY_CHECKS=0;
+Query OK, 0 rows affected (0,00 sec)
 
+mysql> DELETE Doctor, Appointment FROM Doctor, Appointment WHERE Doctor.id = Appointment.Doctor_id AND Doctor.FirstName = 'Андрей' AND Doctor.LastName = 'Быков';
+Query OK, 2 rows affected (0,15 sec)
 ```
 - Добавить нового врача Фила Ричардса и новую пациентку Василису Васильеву и записать её к Филу Ричардсу на приём на 2022-02-14.
+```
+
 
 
 
