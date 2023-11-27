@@ -435,5 +435,20 @@ mysql> select * from Doctor;
 ```
 ## 7. Установить MongoDB
 ```
+evilsmile@Evilsmile:~$ sudo systemctl status mongod.service
+● mongod.service - MongoDB Database Server
+     Loaded: loaded (/lib/systemd/system/mongod.service; enabled; vendor preset: enabled)
+     Active: active (running) since Mon 2023-11-27 18:33:19 EET; 2s ago
+       Docs: https://docs.mongodb.org/manual
+   Main PID: 10326 (mongod)
+     Memory: 54.3M
+        CPU: 1.372s
+     CGroup: /system.slice/mongod.service
+             └─10326 /usr/bin/mongod --config /etc/mongod.conf
+
+ноя 27 18:33:19 Evilsmile systemd[1]: Started MongoDB Database Server.
+```
+## 8. Создать БД clinic и наполнить её данными используя скрипты из https://github.com/tms-dos17-onl/_sandbox/tree/main/lecture18/mongo/initdb.d.
+```
 
 
