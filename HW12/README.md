@@ -356,6 +356,44 @@ Press CTRL+C to quit
 ## - Для тестирования метода /uploadFile использовать файл размером больше 1MB.
 ## - Вывести в консоль содержимое файла конфигурации Nginx с измененными значениями и комментариями.
 ```
+evilsmile@Evilsmile:/etc/nginx/sites-available$ cat hw12.conf
+server {
+        listen 8081;
+        listen [::]:8081;
+	root /home/evilsmile/api;
+	index index.html index.htm index.nginx-debian.html;
+
+        server_name hw12.conf;
+
+        location / {
+                proxy_pass          http://127.0.0.1:5000/;
+                rewrite /(.*) /$1 break;
+                client_max_body_size 100M;
+                proxy_read_timeout 90s;
+                proxy_set_header    Host $host;
+                proxy_set_header    X-Real-IP $remote_addr;
+                proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header    X-Forwarded-Proto $scheme;
+                location /apidocs {
+                        rewrite /(.*) /$1 break;
+                        proxy_pass          http://127.0.0.1:5000/apidocs;
+                }
+        }
+
+}
+
+```
+![изображение](https://github.com/tms-dos17-onl/Eugene-stasiukevich/assets/100120414/40ecc2f1-2eee-4c0d-b202-1defbe0f5a56)
+
+![изображение](https://github.com/tms-dos17-onl/Eugene-stasiukevich/assets/100120414/ebd94753-b376-4e82-93f7-e80deb9c2030)
+
+![изображение](https://github.com/tms-dos17-onl/Eugene-stasiukevich/assets/100120414/8bf213fa-58d7-40f4-8219-06a405dbbbf3)
+
+![изображение](https://github.com/tms-dos17-onl/Eugene-stasiukevich/assets/100120414/45069c1b-3fff-424c-b2d4-cbada348274a)
+
+
+![изображение](https://github.com/tms-dos17-onl/Eugene-stasiukevich/assets/100120414/72711e8e-5132-40d8-a557-3fac44bcc3b4)
+
 
 
 
